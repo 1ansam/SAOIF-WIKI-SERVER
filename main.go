@@ -61,6 +61,21 @@ func main() {
 		}
 
 	})
+	router.GET("/saoif/:key", func(context *gin.Context) {
+		key := context.Param("key")
+		file, err := ioutil.ReadFile("./saoif/" + key)
+		if err != nil {
+			return
+		}
+
+		if err != nil {
+			return
+		}
+		fileContentDisposition := "attachment;filename=\"" + key + "\""
+		context.Header("Content-Type", "application/x-png")
+		context.Header("Content-Disposition", fileContentDisposition)
+		context.Data(http.StatusOK, "application/x-png", file)
+	})
 
 	router.Run("localhost:8990")
 }
