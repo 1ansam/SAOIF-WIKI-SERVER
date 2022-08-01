@@ -75,30 +75,6 @@ func setRouter(router *gin.Engine, path string) {
 
 func main() {
 	router := gin.Default()
-	//
-	//router.GET("/saoif/ability/four_stars", func(context *gin.Context) {
-	//	images, err := getFiles("./saoif/ability/four_stars")
-	//	if err != nil {
-	//		context.IndentedJSON(http.StatusNotFound, nil)
-	//	} else {
-	//		context.IndentedJSON(http.StatusOK, images)
-	//	}
-	//
-	//})
-	//router.GET("/saoif/:key/", func(context *gin.Context) {
-	//	key := context.Param("key")
-	//	file, err := ioutil.ReadFile("./saoif/" + key)
-	//	if err != nil {
-	//		return
-	//	}
-	//
-	//	if err != nil {
-	//		return
-	//	}
-	//	fileContentDisposition := "attachment;filename=\"" + key + "\""
-	//	context.Header("Content-Disposition", fileContentDisposition)
-	//	context.Data(http.StatusOK, "application/x-png", file)
-	//})
 	//能力
 	setRouter(router, "/saoif/ability/four_stars")
 	setRouter(router, "/saoif/ability/three_stars")
