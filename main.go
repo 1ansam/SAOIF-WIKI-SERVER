@@ -75,18 +75,22 @@ func setRouter(router *gin.Engine, path string) {
 
 func main() {
 	router := gin.Default()
-	//能力
-	setRouter(router, "/saoif/ability/four_stars")
-	setRouter(router, "/saoif/ability/three_stars")
-	setRouter(router, "/saoif/ability/two_stars")
-	setRouter(router, "/saoif/ability/one_star")
-	setRouter(router, "/saoif/ability/rush")
+	router.GET("/banner", func(context *gin.Context) {
+		context.IndentedJSON(http.StatusOK,
+			"                 公 告                    \n"+
+				"	刀剑神域关键斗士（WIKI）\n"+
+				"	更新内容：\n"+
+				"		1.记忆技能卡替换为中文卡面\n"+
+				"		2.取消1-3星卡片展示\n"+
+				"		3.增加能力、减益分类查询\n"+
+				"					2022-08-04\n"+
+				"	如想提交中文卡片、纠错或补充资料\n"+
+				"	请联系QQ:1229921114\n"+
+				"	感谢十六叶玩家提供的图片")
+	})
 
 	//单手直剑
 	setRouter(router, "/saoif/sword/four_stars")
-	setRouter(router, "/saoif/sword/three_stars")
-	setRouter(router, "/saoif/sword/two_stars")
-	setRouter(router, "/saoif/sword/one_star")
 	setRouter(router, "/saoif/sword/rush")
 	setRouter(router, "/saoif/sword/burst")
 	setRouter(router, "/saoif/sword/connect")
@@ -94,9 +98,6 @@ func main() {
 
 	//单手细剑
 	setRouter(router, "/saoif/rapier/four_stars")
-	setRouter(router, "/saoif/rapier/three_stars")
-	setRouter(router, "/saoif/rapier/two_stars")
-	setRouter(router, "/saoif/rapier/one_star")
 	setRouter(router, "/saoif/rapier/rush")
 	setRouter(router, "/saoif/rapier/burst")
 	setRouter(router, "/saoif/rapier/connect")
@@ -104,9 +105,6 @@ func main() {
 
 	//匕首
 	setRouter(router, "/saoif/dagger/four_stars")
-	setRouter(router, "/saoif/dagger/three_stars")
-	setRouter(router, "/saoif/dagger/two_stars")
-	setRouter(router, "/saoif/dagger/one_star")
 	setRouter(router, "/saoif/dagger/rush")
 	setRouter(router, "/saoif/dagger/burst")
 	setRouter(router, "/saoif/dagger/connect")
@@ -114,9 +112,6 @@ func main() {
 
 	//单手棍
 	setRouter(router, "/saoif/club/four_stars")
-	setRouter(router, "/saoif/club/three_stars")
-	setRouter(router, "/saoif/club/two_stars")
-	setRouter(router, "/saoif/club/one_star")
 	setRouter(router, "/saoif/club/rush")
 	setRouter(router, "/saoif/club/burst")
 	setRouter(router, "/saoif/club/connect")
@@ -124,9 +119,6 @@ func main() {
 
 	//双手斧
 	setRouter(router, "/saoif/axe/four_stars")
-	setRouter(router, "/saoif/axe/three_stars")
-	setRouter(router, "/saoif/axe/two_stars")
-	setRouter(router, "/saoif/axe/one_star")
 	setRouter(router, "/saoif/axe/rush")
 	setRouter(router, "/saoif/axe/burst")
 	setRouter(router, "/saoif/axe/connect")
@@ -134,9 +126,6 @@ func main() {
 
 	//双手枪
 	setRouter(router, "/saoif/spear/four_stars")
-	setRouter(router, "/saoif/spear/three_stars")
-	setRouter(router, "/saoif/spear/two_stars")
-	setRouter(router, "/saoif/spear/one_star")
 	setRouter(router, "/saoif/spear/rush")
 	setRouter(router, "/saoif/spear/burst")
 	setRouter(router, "/saoif/spear/connect")
@@ -144,9 +133,6 @@ func main() {
 
 	//双手弓
 	setRouter(router, "/saoif/bow/four_stars")
-	setRouter(router, "/saoif/bow/three_stars")
-	setRouter(router, "/saoif/bow/two_stars")
-	setRouter(router, "/saoif/bow/one_star")
 	setRouter(router, "/saoif/bow/rush")
 	setRouter(router, "/saoif/bow/burst")
 	setRouter(router, "/saoif/bow/connect")
@@ -154,13 +140,64 @@ func main() {
 
 	//盾
 	setRouter(router, "/saoif/shield/four_stars")
-	setRouter(router, "/saoif/shield/three_stars")
-	setRouter(router, "/saoif/shield/two_stars")
-	setRouter(router, "/saoif/shield/one_star")
 	setRouter(router, "/saoif/shield/rush")
 	setRouter(router, "/saoif/shield/burst")
 	setRouter(router, "/saoif/shield/connect")
 	setRouter(router, "/saoif/shield/mod")
+
+	//能力
+	setRouter(router, "/saoif/ability/four_stars")
+	setRouter(router, "/saoif/ability/rush")
+	//提升力量
+	setRouter(router, "/saoif/ability/power_rise_3")
+	setRouter(router, "/saoif/ability/power_rise_4")
+	//先遣部队
+	setRouter(router, "/saoif/ability/advance_trooper_5")
+	setRouter(router, "/saoif/ability/advance_trooper_4")
+	setRouter(router, "/saoif/ability/advance_trooper_3")
+	//百战
+	setRouter(router, "/saoif/ability/veteran_sword_technique_4")
+	//百防
+	setRouter(router, "/saoif/ability/light_magic_4")
+	//防御提升
+	setRouter(router, "/saoif/ability/vital_assention_4")
+	setRouter(router, "/saoif/ability/vital_assention_3")
+	//武器弱点攻击增加（打800/打500/刺800/刺500）
+	setRouter(router, "/saoif/ability/weapon_weakness_attack_rise")
+
+	//减益
+	//刻印 小刻印 死兆印 烙印
+	setRouter(router, "/saoif/debuff/mark_debuff")
+	setRouter(router, "/saoif/debuff/small_mark_debuff")
+	setRouter(router, "/saoif/debuff/death_mark_debuff")
+	setRouter(router, "/saoif/debuff/stigma_debuff")
+	//防御弱化5
+	setRouter(router, "/saoif/debuff/weak_defense_debuff_5")
+	//斩、次、打弱化
+	setRouter(router, "/saoif/debuff/weak_slash_debuff_4")
+	setRouter(router, "/saoif/debuff/weak_thrust_debuff_4")
+	setRouter(router, "/saoif/debuff/weak_blunt_debuff_4")
+	//暗、光、风、土、火、水弱化
+	setRouter(router, "/saoif/debuff/dark_element_weak_debuff_4")
+	setRouter(router, "/saoif/debuff/dark_element_weak_debuff_3")
+	setRouter(router, "/saoif/debuff/holy_element_weak_debuff_4")
+	setRouter(router, "/saoif/debuff/wind_element_weak_debuff_4")
+	setRouter(router, "/saoif/debuff/earth_element_weak_debuff_4")
+	setRouter(router, "/saoif/debuff/fire_element_weak_debuff_4")
+	setRouter(router, "/saoif/debuff/fire_element_weak_debuff_5")
+	setRouter(router, "/saoif/debuff/water_element_weak_debuff_4")
+	setRouter(router, "/saoif/debuff/water_element_weak_debuff_3")
+	//黑暗（降命中率）
+	setRouter(router, "/saoif/debuff/dusk_debuff_4")
+	//移除敌人攻击、防御 增加
+	setRouter(router, "/saoif/debuff/remove_attack_increasing_buff")
+	setRouter(router, "/saoif/debuff/remove_defense_increasing_buff")
+	//切换量表增加更多
+	setRouter(router, "/saoif/debuff/greater_than_usual_switch")
+	//切换量表增加大量
+	setRouter(router, "/saoif/debuff/greater_more_than_usual_switch")
+	//中断量表增加更多
+	setRouter(router, "/saoif/debuff/quicker_than_usual_break")
 
 	err := router.Run(":7777")
 	if err != nil {
