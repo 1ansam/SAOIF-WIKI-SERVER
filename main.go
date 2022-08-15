@@ -76,17 +76,12 @@ func setRouter(router *gin.Engine, path string) {
 func main() {
 	router := gin.Default()
 	router.GET("/banner", func(context *gin.Context) {
-		context.IndentedJSON(http.StatusOK,
-			"                 公 告                    \n"+
-				"	刀剑神域关键斗士（WIKI）\n"+
-				"	更新内容：\n"+
-				"		1.记忆技能卡替换为中文卡面\n"+
-				"		2.取消1-3星卡片展示\n"+
-				"		3.增加能力、减益分类查询\n"+
-				"					2022-08-04\n"+
-				"	如想提交中文卡片、纠错或补充资料\n"+
-				"	请联系QQ:1229921114\n"+
-				"	感谢十六叶玩家提供的图片")
+		file, err := ioutil.ReadFile("./banner.txt")
+		if err != nil {
+			context.IndentedJSON(http.StatusNotFound, nil)
+		} else {
+			context.IndentedJSON(http.StatusOK, string(file))
+		}
 	})
 
 	//单手直剑
